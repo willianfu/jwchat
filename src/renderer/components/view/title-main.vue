@@ -1,32 +1,73 @@
 <template>
 	<div class="title">
-		<div class="lt" >
+		<div class="lt">
 			<el-input placeholder="搜索" prefix-icon="el-icon-search"></el-input>
+			<span>
+				<i class="el-icon-plus"></i>
+			</span>
 		</div>
 		<div class="rt">
-			<div>嗦泡大队</div>
-			<i></i>
-			
+			<div class="rt-top">
+				<span :style="isTop? 'background-color: rgb(208, 206, 205)':''"><i class="el-icon-paperclip" @click="toTop"></i></span>
+				<span><i class="el-icon-minus" @click="minWin"></i></span>
+				<span><i class="el-icon-crop" @click="maxWin"></i></span>
+				<span><i class="el-icon-close" @click="exit"></i></span>
+			</div>
+			<div class="rt-bt" v-if="select !== null">
+				<span>{{select.name}}</span>
+				<i class="el-icon-more"></i>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+	import {remote} from 'electron'
+	
     export default {
-        name: "title-main"
+        name: "title-main",
+	    props:['select'],
+	    data(){
+            return{
+                isMax: false,
+	            isTop: false
+            }
+	    },
+	    methods:{
+            toTop(){
+                remote.getCurrentWindow().setAlwaysOnTop(!this.isTop)
+                this.isTop = !this.isTop
+            },
+            exit(){
+                remote.app.quit()
+            },
+            minWin(){
+                remote.getCurrentWindow().minimize()
+            },
+            maxWin(){
+                if (this.isMax){
+                    remote.getCurrentWindow().unmaximize()
+                    this.isMax = false
+                }else {
+                    remote.getCurrentWindow().maximize()
+                    this.isMax = true
+                }
+                
+            }
+	    }
     }
 </script>
 
 <style scoped lang="less">
 	.title{
-		margin-left: 50px;
+		margin-left: 60px;
 		width: 100%;
 		height: 64px;
 		background-color: rgb(245, 245, 245);
 		-webkit-app-region: drag;
 		/deep/ .el-input{
 			margin-top: 20px;
-			margin-left: 20px;
+			margin-left: 10px;
 			width: 190px;
 			-webkit-app-region: no-drag;
 			.el-input__inner{
@@ -47,13 +88,73 @@
 			}
 		}
 		.lt{
-			width: 260px;
+			float: left;
+			width: 250px;
 			height: 100%;
 			background-color:rgb(238, 234, 232);
+			span{
+				margin-left: 8px;
+				cursor: pointer;
+				padding: 4px 4.5px;
+				border-radius: 5px;
+				background-color: rgb(219, 217, 216);
+				-webkit-app-region: no-drag;
+				&:hover{
+					background-color: rgb(208, 206, 205);
+				}
+			}
 		}
 		.rt{
-			width: 260px;
+			float: left;
 			height: 100%;
+			.rt-top{
+				position: fixed;
+				top: 0px;
+				right: 0px;
+				width: 100%;
+				text-align: right;
+				span{
+					cursor: pointer;
+					padding: 5px 9px;
+					//border: 1px solid red;
+					margin: 0 0;
+					&:hover{
+						background-color: rgb(229, 229, 229);
+					}
+				}
+				&>span:last-child{
+					&:hover{
+						background-color: rgb(250, 81, 81);
+						i{
+							color: #fff;
+						}
+					}
+				}
+				i{
+					margin-top: 10px;
+					font-size: smaller;
+					color: rgb(174, 174, 174);
+					-webkit-app-region: no-drag;
+				}
+			}
+			.rt-bt{
+				margin-left: 30px;
+				margin-top: 28px;
+				font-size: large;
+				font-family: 微软雅黑,serif;
+				font-weight: 400;
+				i{
+					position: fixed;
+					cursor: pointer;
+					color: rgb(174, 174, 174);
+					top: 36px;
+					right: 10px;
+					-webkit-app-region: no-drag;
+					&:hover{
+						color: rgb(145, 145, 145);
+					}
+				}
+			}
 		}
 	}
 </style>

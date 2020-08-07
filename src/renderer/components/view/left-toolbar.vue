@@ -12,8 +12,41 @@
 					<i class="el-icon-user"></i>
 				</el-badge>
 			</div>
+			<div class="item">
+				<el-badge :is-dot="false">
+					<i class="el-icon-news"></i>
+				</el-badge>
+			</div>
+			<div class="item">
+				<el-badge :is-dot="false">
+					<i class="el-icon-folder-opened"></i>
+				</el-badge>
+			</div>
+			<div class="item">
+				<el-badge :is-dot="false">
+					<i class="el-icon-bangzhu"></i>
+				</el-badge>
+			</div>
+			<div style="position:fixed; bottom: 0;">
+				<div class="item bt">
+					<el-badge :is-dot="false">
+						<i class="el-icon-connection"></i>
+					</el-badge>
+				</div>
+				<div class="item bt">
+					<el-badge :is-dot="false">
+						<i class="el-icon-mobile-phone"></i>
+					</el-badge>
+				</div>
+				<div class="item bt">
+					<el-badge :is-dot="false">
+						<i class="el-icon-s-operation"></i>
+					</el-badge>
+				</div>
+			</div>
+			
+			
 		</div>
-		
 	
 	</div>
 </template>
@@ -46,7 +79,7 @@
 			color: rgb(131, 131, 131);
 			width: 50px;
 			height: 45px;
-			
+			font-weight: 100;
 			&:hover {
 				color: rgb(150, 150, 150);
 			}
@@ -54,7 +87,7 @@
 				height: 80px;
 				//line-height: 50px;
 				i {
-					font-size: larger;
+					font-size: 21px;
 				}
 				.el-badge__content{
 					border-color: #F56C6C !important;
