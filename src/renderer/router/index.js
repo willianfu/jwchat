@@ -3,20 +3,16 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
-    {
-      path: '*',
-      redirect: '/'
-    },
     {
       path: '/',
       name: 'login',
       component: require('@/components/login').default
     },
     {
-      path: '/main',
-      name: 'main',
+      path: '/index',
+      name: 'index',
       component: require('@/components/view/main').default,
       children:[
         {
@@ -33,3 +29,19 @@ export default new Router({
     },
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  console.log(to.path)
+  if (to.matched.length === 0) {
+    //next("/404");
+  } else {
+    //如果匹配到就跳转
+    if (to.path !== "/404") {
+      sessionStorage.setItem("routerCatch", to.path);
+    }
+    next();
+  }
+});
+
+export default router
+

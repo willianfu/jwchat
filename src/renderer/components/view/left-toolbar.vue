@@ -2,50 +2,29 @@
 	<div class="bar">
 		<img src="../../assets/avatr.jpg" width="35" height="35">
 		<div style="margin-top: 20px">
-			<div class="item">
-				<el-badge :value="50">
-					<i class="el-icon-chat-square"></i>
+			<div class="item" v-for="(m,index) in menus">
+				<el-badge :value="m.value" :is-dot="m.isDot" :hidden="m.value === 0">
+					<i :class="m.icon" @click="to(m.path); now = index;" :style="now === index ? 'color: rgb(7, 193, 96)':''"></i>
 				</el-badge>
 			</div>
-			<div class="item">
-				<el-badge :is-dot="true">
-					<i class="el-icon-user"></i>
-				</el-badge>
-			</div>
-			<div class="item">
-				<el-badge :is-dot="false">
-					<i class="el-icon-news"></i>
-				</el-badge>
-			</div>
-			<div class="item">
-				<el-badge :is-dot="false">
-					<i class="el-icon-folder-opened"></i>
-				</el-badge>
-			</div>
-			<div class="item">
-				<el-badge :is-dot="false">
-					<i class="el-icon-bangzhu"></i>
-				</el-badge>
-			</div>
+			
 			<div style="position:fixed; bottom: 0;">
 				<div class="item bt">
 					<el-badge :is-dot="false">
-						<i class="el-icon-connection"></i>
+						<i class="el-icon-connection" @click="to()"></i>
 					</el-badge>
 				</div>
 				<div class="item bt">
 					<el-badge :is-dot="false">
-						<i class="el-icon-mobile-phone"></i>
+						<i class="el-icon-mobile-phone" @click="to()"></i>
 					</el-badge>
 				</div>
 				<div class="item bt">
 					<el-badge :is-dot="false">
-						<i class="el-icon-s-operation"></i>
+						<i class="el-icon-s-operation" @click="to()"></i>
 					</el-badge>
 				</div>
 			</div>
-			
-			
 		</div>
 	
 	</div>
@@ -54,7 +33,26 @@
 <script>
     export default {
         name: "left-toolbar",
-
+	    data(){
+            return{
+                now: 0,
+                menus:[
+                    {icon:'el-icon-chat-square', path:'chat', value:0, isDot: false},
+                    {icon:'el-icon-user', path:'contact', value:0, isDot: true},
+                    {icon:'el-icon-news', path:'', value:0, isDot: false},
+                    {icon:'el-icon-folder-opened', path:'', value:0, isDot: false},
+                    {icon:'el-icon-bangzhu', path:'', value:0, isDot: false},
+                ]
+            }
+	    },
+	    methods:{
+            to(path){
+                if (path !== null && path !== undefined){
+                    console.log('=> /main/' + path)
+                    this.$router.push(path)
+                }
+            }
+	    }
     }
 </script>
 

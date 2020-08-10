@@ -10,7 +10,7 @@
   }
 </script>
 
-<style>
+<style lang="less">
   body, html{
     margin:0 0;
     height:100%;
@@ -19,22 +19,32 @@
     height: 100%;
     width: 100%;
   }
-  ::-webkit-scrollbar{
-    width:7px;
-    height:7px;
-    /**/
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    background-color: #fff;
   }
-  /*div::-webkit-scrollbar-track{display: none;}*/
-  div::-webkit-scrollbar-thumb{
-    width: 10px;
-    height: 15px;
-    border-radius: 5px;
-    background-color: rgba(210, 210, 210, 0);
+  ::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+     background-color: rgb(203, 200, 198);
+    &:hover{
+     background-color: rgb(180, 178, 176);
+   }
   }
-  div::-webkit-scrollbar-thumb:hover{
-    background-color: rgb(186, 186, 186);
+
+  button:focus{
+    outline: none;
   }
+  
   li{
     list-style-type: none;
+  }
+  .el-badge__content{
+    background-color: rgb(250, 81, 81) !important;
+    border-color: rgb(250, 81, 81) !important;
+  }
+  .is-dot{
+    height: 8px !important;
+    width: 8px;
   }
 </style>

@@ -2,7 +2,8 @@
 	<div class="cp-group">
 		<div>
 			<div class="img">
-				<el-badge :is-dot="group.unRead > 1">
+				<el-badge :is-dot="group.unRead > 0 && group.type === 'group'"
+				          :value="group.unRead" :hidden="0 === group.unRead">
 					<img :src="group.img" width="40" height="40">
 				</el-badge>
 			</div>
@@ -33,7 +34,7 @@
 	    methods:{
             subMsg(msg){
                 if (msg !== undefined && msg !== null && msg.length > 0){
-                    return this.subStr(msg[msg.length - 1].content)
+                    return this.subStr(this.filterHtml(msg[msg.length - 1].content))
                 }else{
                     return ''
                 }
@@ -56,8 +57,16 @@
                 }else{
                     return ''
                 }
-                
-		    }
+		    },
+            filterHtml(m) {
+                if (m !== undefined && m !== null && m.length > 0){
+                    let msg = m.replace(/<\/?[^>]*>/g, ''); //去除HTML Tag
+                    msg = msg.replace(/[|]*\n/, '') //去除行尾空格
+                    msg = msg.replace(/&npsp;/ig, ''); //去掉npsp
+                    return msg;
+                }
+                return ''
+            }
 	    }
     }
 </script>
@@ -65,6 +74,7 @@
 <style scoped lang="less">
 	.cp-group {
 		height: 50px;
+		padding-top: 6px;
 		font-size: small;
 		position: relative;
 		p {
@@ -72,19 +82,25 @@
 			margin: 5px 0;
 		}
 		
-		.img {
+		/deep/ .img {
 			display: inline-block;
+			.el-badge__content{
+				font-size: 8px;
+				height: 15px;
+				line-height: 14px;
+			}
 		}
 		.time{
 			position: absolute;
+			font-size: smaller;
 			right: 0;
-			top: -1px;
+			top: 5px;
 		}
 		.content {
 			//display: inline-block;
 			position: absolute;
 			left: 50px;
-			top: -4px;
+			top: 2px;
 		}
 	}
 </style>

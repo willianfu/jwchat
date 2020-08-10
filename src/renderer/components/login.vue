@@ -66,7 +66,8 @@
                 remote.app.quit()
             },
             login() {
-                this.$router.push('/main')
+                console.log(this.$router)
+                this.$router.push('/index')
             }
         }
     }
