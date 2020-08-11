@@ -2,7 +2,7 @@
 	<div class="main">
 		<left-toolbar style="position:fixed; top: 0; left: 0; z-index: 999"></left-toolbar>
 		<div class="titles">
-			<title-main :select="select"></title-main>
+			<title-main :select="$store.state.Session.chatSession"></title-main>
 		</div>
 		<router-view/>
 	</div>
@@ -19,11 +19,9 @@
         components: {Chat, leftToolbar, titleMain},
         data() {
             return {
-                select: null,
             }
         },
         beforeCreate() {
-            //remote.getCurrentWebContents().closeDevTools()
             remote.getCurrentWindow().setSize(800, 800)
             remote.getCurrentWindow().setMinimumSize(800, 500)
         },

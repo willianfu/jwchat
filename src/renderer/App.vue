@@ -5,8 +5,18 @@
 </template>
 
 <script>
+  import {remote} from 'electron'
+  import initSqljs  from 'sql.js'
+  
   export default {
-    name: 'jwchat'
+    name: 'jwchat',
+    mounted() {
+      //remote.getCurrentWebContents().closeDevTools()
+      initSqljs().then(sql => {
+        let db = new sql.Database()
+        console.log(db.exec('select * from friends'))
+      })
+    }
   }
 </script>
 

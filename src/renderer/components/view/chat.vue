@@ -119,6 +119,7 @@
             },
             selects(s) {
                 this.select = s
+                this.$store.commit('setChatSession', s)
             },
 	    }
     }

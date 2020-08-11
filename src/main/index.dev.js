@@ -9,6 +9,7 @@
 
 // Install `electron-debug` with `devtron`
 require('electron-debug')({ showDevTools: true })
+import '../renderer/store'
 
 // Install `vue-devtools`
 require('electron').app.on('ready', () => {
