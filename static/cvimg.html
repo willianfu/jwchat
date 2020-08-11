@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片粘贴</title>
+	<style>
+		#img{
+			width: 500px;
+		}
+	</style>
+	<img id="img" src="" alt="">
+	通过Ctrl + v将图片粘贴
+</head>
+<body>
+<script>
+    setPasteImg();
+    //获取粘贴板上的图片
+    function setPasteImg(){
+        //粘贴事件
+        document.addEventListener('paste', function(event){
+            
+            if (event.clipboardData || event.originalEvent) {
+                var clipboardData = (event.clipboardData || event.originalEvent.clipboardData);
+                if(clipboardData.items){
+                    var blob;
+                    for (var i = 0; i < clipboardData.items.length; i++) {
+                        if (clipboardData.items[i].type.indexOf("image") !== -1) {
+                            blob = clipboardData.items[i].getAsFile();
+                        }
+                    }
+                    var render = new FileReader();
+                    render.onload = function (evt) {
+                        //输出base64编码
+                        var base64 = evt.target.result;
+                        document.getElementById('img').setAttribute('src', base64);
+                    }
+                    render.readAsDataURL(blob);
+                }
+
+            }
+
+        })
+
+    }
+
+</script>
+</body>
+</html>
+

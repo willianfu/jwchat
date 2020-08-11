@@ -1,37 +1,77 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>div contenteditable光标测试</title>
-	<style type="text/css">
-		.div{ width:600px; height:200px; border:1px solid #CCC}
+	<meta charset="UTF-8">
+	<title>contenteditable</title>
+	<style>
+		#insert{
+			width: 90px;
+			height: 30px;
+			border: 1px solid #ccc;
+			background-color: #fff;
+			margin: 10px;
+		}
+		#editor{
+			padding: 10px;
+			overflow-y: auto;
+			min-height:200px;
+			border:1px solid #f33;
+			outline: 0;
+		}
+		#editor h4{
+			margin: 10px 0;
+		}
 	</style>
-	<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
-	<script type="text/javascript">
-        $(document).ready(function(e) {
-            $('.aclick').click(function(){
-                $('.div-label').html("回复[潇sdfsdfssssssssssssssdfsdf潇]:");
-                $('.div').focus();
-                getC($('.div'))
-            })
-        });
-        function getC(that){
-            if(document.all){
-                that.range=document.selection.createRange();
-                that.range.select();
-                that.range.moveStart("character",-1);
-            }else{
-                that.range=window.getSelection().getRangeAt(0);
-                that.range.setStart(that.range.startContainer,2);
+</head>
+<body>
+
+<button type="button" id='insert'>插入标题</button>
+<div contentEditable="true" id="editor">
+	<h3>副标题</h3>
+	<p>文本</p>
+</div>
+
+</body>
+<script>
+
+    document.getElementById('insert').onclick=function(){
+        var content = prompt('请输入内容');
+        document.getElementById('editor').focus();
+        if(!!content){
+            insertHtml('<span>'+content+'</span>');
+        }
+    }
+
+    document.getElementById('editor').onpaste=function(event){
+        var e = event || window.event
+        e.preventDefault();
+        var text =  (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('在这里输入文本');
+
+        document.execCommand("insertText", false, text);
+    };
+
+    function insertHtml(html) {
+        var sel = window.getSelection(),
+            range;
+
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            range.deleteContents();
+            var el = document.createElement("span");
+            el.innerHTML = html;
+            var frag = document.createDocumentFragment(), node, lastNode;
+            while ( (node = el.firstChild) ) {
+                lastNode = frag.appendChild(node);
+            }
+            range.insertNode(frag);
+            if (lastNode) {
+                range = range.cloneRange();
+                range.setStartAfter(lastNode);
+                range.collapse(true);
+                sel.removeAllRanges();
+                sel.addRange(range);
             }
         }
-	</script>
-</head>
-
-<body>
-<a href="#" class="aclick">回复潇潇</a>
-<div class="div" contenteditable="true">
-	<label contenteditable="false" class="div-label">回复标题：</label>
-</div>
-</body>
+    }
+</script>
 </html>
