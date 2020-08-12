@@ -4,7 +4,7 @@
 		<div class="titles">
 			<title-main :select="$store.state.Session.chatSession"></title-main>
 		</div>
-		<router-view/>
+		<router-view style="margin-left: 60px"/>
 	</div>
 </template>
 
@@ -12,7 +12,7 @@
     import {remote} from 'electron'
     import leftToolbar from './left-toolbar'
     import titleMain from './title-main'
-    import Chat from "./chat";
+    import Chat from "./chat/chat";
 
     export default {
         name: "index",

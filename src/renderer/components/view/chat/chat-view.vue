@@ -5,7 +5,7 @@
 				<li v-for="c in chat.msgs">
 					<div v-if="c.isMe" style="min-height: 37px">
 						<div class="me" v-html="c.content"></div>
-						<img class="me-img" src="../../assets/avatr.jpg" width="33" height="33">
+						<img class="me-img" src="../../../assets/avatr.jpg" width="33" height="33">
 					</div>
 					<div v-else>
 						<img :src="chat.img" width="33" height="33">

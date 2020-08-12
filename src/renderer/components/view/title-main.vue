@@ -39,7 +39,8 @@
                 this.isTop = !this.isTop
             },
             exit(){
-                remote.app.quit()
+                //remote.app.quit()
+                remote.getCurrentWindow().hide()
             },
             minWin(){
                 remote.getCurrentWindow().minimize()

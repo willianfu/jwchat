@@ -1,22 +1,31 @@
-# jwchat
+# jwchat 微聊
 
-> An chat tool
+> 基于 electron-vue 的仿微信客户端
 
-#### Build Setup
+### 安装/部署
 
 ``` bash
-# install dependencies
+# 安装依赖
 npm install
 
-# serve with hot reload at localhost:9080
+# 本地运行
 npm run dev
 
-# build electron application for production
+# 编译打包成exe
 npm run build
 
-
 ```
+### 登录界面
 
----
 
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+###  聊天界面
+
+#### 发送消息
+
+#### 发送文件
+
+#### 输入窗口大小拖拽
+
+### 联系人界面
+
+

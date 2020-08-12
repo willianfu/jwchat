@@ -18,12 +18,12 @@ const router = new Router({
         {
           path: '/chat',
           name: 'chat',
-          component: require('@/components/view/chat').default
+          component: require('@/components/view/chat/chat').default
         },
         {
           path: '/contact',
           name: 'contact',
-          component: require('@/components/view/contact').default
+          component: require('@/components/view/contact/contact').default
         },
       ]
     },

@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "electron-updater": "^4.3.1",
     "element-ui": "^2.13.2",
     "sql.js": "^1.3.0",
     "vue": "^2.5.16",
@@ -99,5 +100,11 @@
     "webpack-dev-server": "^3.1.4",
     "webpack-hot-middleware": "^2.22.2",
     "webpack-merge": "^4.1.3"
-  }
+  },
+  "publish": [
+    {
+      "provider": "generic",
+      "url": "http://lee.com/app/update"
+    }
+  ]
 }

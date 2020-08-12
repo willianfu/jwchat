@@ -6,7 +6,7 @@
 		<div class="body">
 			<div class="logo" style="text-align:center;margin-top: 20px;">
 				<transition name="fade">
-					<img src="../assets/logo-g.png" width="80" height="80" v-show="showLogo"/>
+					<img src="../assets/logo.png" width="90" height="80" v-show="showLogo"/>
 				</transition>
 			</div>
 			<transition name="fade">
@@ -17,6 +17,7 @@
 					<div style="margin-top: 50px">
 						<el-input v-model="user.account" placeholder="请输入账号"></el-input>
 						<el-input v-model="user.password" placeholder="请输入密码" type="password"></el-input>
+						<el-checkbox v-model="remember">下次直接登录</el-checkbox>
 						<el-button type="primary" class="submit" @click="login">登 录</el-button>
 					</div>
 					<div class="option">
@@ -31,12 +32,13 @@
 </template>
 
 <script>
-    import {remote, app} from 'electron'
+    import {remote, app, ipcRenderer} from 'electron'
 
     export default {
         name: "login",
         data() {
             return {
+                remember:false,
                 showLogo: false,
                 showForm: false,
                 showFont: false,
@@ -48,7 +50,7 @@
         },
         beforeCreate() {
             //remote.getCurrentWindow().setMaximumSize(350, 500)
-            remote.getCurrentWindow().setSize(350, 530,false)
+            remote.getCurrentWindow().setSize(650, 530, true)
         },
         mounted() {
             this.showLogo = true;
@@ -63,10 +65,12 @@
         },
         methods: {
             exit() {
-                remote.app.quit()
+                //remote.app.quit()
+	            remote.getCurrentWindow().hide()
             },
             login() {
                 console.log(this.$router)
+                ipcRenderer.send('new-msg','xxx发来一一条消息')
                 this.$router.push('/index')
             }
         }
@@ -93,7 +97,20 @@
 		min-width: 310px;
 		height: 100%;
 		background-color: rgb(239, 239, 239);
-		
+		.el-checkbox__label{
+			font-size: 12px;
+		}
+		.el-checkbox{
+			font-size: small;
+		}
+		.el-checkbox__input.is-checked+.el-checkbox__label{
+			color: #07C160;
+		}
+		.el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner{
+			color: #07C160;
+			background-color: #07C160;
+			border-color: #07C160;
+		}
 		.submit {
 			background-color: #07C160;
 			border-color: #07C160;
@@ -103,7 +120,7 @@
 				border-color: #07C160;
 			}
 			
-			margin-top: 20px;
+			margin-top: 5px;
 			width: 100%;
 		}
 		
