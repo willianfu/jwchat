@@ -5,7 +5,7 @@
 				<li v-for="c in chat.msgs">
 					<div v-if="c.isMe" style="min-height: 37px">
 						<div class="me" v-html="c.content"></div>
-						<img class="me-img" src="../../../assets/avatr.jpg" width="33" height="33">
+						<img class="me-img" src="../../../assets/image/avatr.jpg" width="33" height="33">
 					</div>
 					<div v-else>
 						<img :src="chat.img" width="33" height="33">
@@ -239,6 +239,8 @@
 </script>
 
 <style scoped lang="less">
+	@import '@/assets/style/theme';
+	
 	.cp-chat-view {
 		font-family: 微软雅黑, serif;
 		height: 100%;
@@ -246,16 +248,16 @@
 		position: relative;
 		
 		.msg {
-			border-top: 1px solid rgb(231, 231, 231);
+			border-top: 1px solid @borderColor;
 			padding: 0 30px;
-			background-color: rgb(245, 245, 245);
+			background-color: @viewBgc;
 			position: absolute;
 			height: calc(100% - 150px);
 			width: 100%;
 			overflow-y: auto;
 			
 			&::-webkit-scrollbar {
-				background-color: rgba(245, 245, 245, 0.5);
+				background-color: @viewBgc;
 			}
 			
 			img {
@@ -299,7 +301,7 @@
 						border-radius: 4px;
 						padding: 8px 10px;
 						color: black;
-						background-color: rgb(158, 234, 106);
+						background-color: @msgBgc;
 					}
 					
 				}

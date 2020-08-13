@@ -16,6 +16,9 @@
 </script>
 
 <style lang="less">
+  
+  @import './assets/style/theme';
+  
   body, html{
     margin:0 0;
     height:100%;
@@ -47,9 +50,13 @@
     }
   }
 
+  .el-input.is-active .el-input__inner, .el-input__inner:focus{
+    border-color: rgb(192, 196, 204) !important;
+  }
+  
   .el-button--primary{
-    background-color: #07C160 !important;
-    border-color: #07C160 !important;
+    background-color: @primary !important;
+    border-color: @primary !important;
   }
   .el-button--default{
     background-color: #fff !important;

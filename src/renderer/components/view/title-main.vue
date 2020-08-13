@@ -13,8 +13,8 @@
 				<span><i class="el-icon-crop" @click="maxWin"></i></span>
 				<span><i class="el-icon-close" @click="exit"></i></span>
 			</div>
-			<div class="rt-bt" v-if="select !== null">
-				<span>{{select.name}}</span>
+			<div class="rt-bt" v-if="title !== null">
+				<span>{{title.name}}</span>
 				<i class="el-icon-more"></i>
 			</div>
 		</div>
@@ -26,7 +26,7 @@
 	
     export default {
         name: "title-main",
-	    props:['select'],
+	    props:['title'],
 	    data(){
             return{
                 isMax: false,
@@ -60,11 +60,13 @@
 </script>
 
 <style scoped lang="less">
+	@import '@/assets/style/theme';
+	
 	.title{
 		margin-left: 60px;
 		width: 100%;
 		height: 64px;
-		background-color: rgb(245, 245, 245);
+		background-color: @viewBgc;
 		-webkit-app-region: drag;
 		/deep/ .el-input{
 			margin-top: 20px;
@@ -92,7 +94,7 @@
 			float: left;
 			width: 250px;
 			height: 100%;
-			background-color:rgb(238, 234, 232);
+			background-color: @groupBgc;
 			span{
 				margin-left: 8px;
 				cursor: pointer;
@@ -125,7 +127,7 @@
 				}
 				&>span:last-child{
 					&:hover{
-						background-color: rgb(250, 81, 81);
+						background-color: @errorColor;
 						i{
 							color: #fff;
 						}
@@ -134,7 +136,7 @@
 				i{
 					margin-top: 10px;
 					font-size: smaller;
-					color: rgb(174, 174, 174);
+					color: @icoColor;
 					-webkit-app-region: no-drag;
 				}
 			}
@@ -142,17 +144,17 @@
 				margin-left: 30px;
 				margin-top: 28px;
 				font-size: large;
-				font-family: 微软雅黑,serif;
+				font-family: @primaryFont;
 				font-weight: 400;
 				i{
 					position: fixed;
 					cursor: pointer;
-					color: rgb(174, 174, 174);
+					color: @icoColor;
 					top: 36px;
 					right: 10px;
 					-webkit-app-region: no-drag;
 					&:hover{
-						color: rgb(145, 145, 145);
+						color: @icoHc;
 					}
 				}
 			}

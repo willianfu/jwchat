@@ -3,7 +3,8 @@
 		<div v-for="n in contacts">
 			<p>{{n.title}}</p>
 			<ul>
-				<li v-for="l in n.list">
+				<li v-for="l in n.list" @click="selects(l, n.type)"
+				    :style="l === select ? 'background-color:rgb(201, 198, 198)' : ''">
 					<img :src="l.img" width="35" height="34" alt="">
 					<span>{{l.name}}</span>
 				</li>
@@ -18,22 +19,32 @@
         props: ['contacts'],
         data() {
             return {
+                select: null,
             }
         },
         mounted() {
         
-        }
+        },
+	    methods:{
+            selects(s, type){
+                this.select = s
+                this.select.type = type
+                this.$store.commit('setSelectSession', s)
+            }
+	    }
     }
 </script>
 
 <style scoped lang="less">
+	@import '@/assets/style/theme';
+	
 	.list {
 		float: left;
 		height: 100%;
 		width: 250px;
 		padding: 0;
 		margin: 0 0;
-		background-color: rgb(238, 234, 232);
+		background-color: @groupBgc;
 		
 		p {
 			margin: 15px 0px 3px 12px;
@@ -42,18 +53,18 @@
 		}
 		
 		&::-webkit-scrollbar {
-			background-color: rgb(238, 234, 232);
+			background-color: @groupBgc;
 		}
 		
 		ul {
-			border-bottom: 1px solid rgb(224, 221, 220);
+			border-bottom: 1px solid @borderColor;
 		}
 		
 		li {
-			font-family: 微软雅黑, serif;
+			font-family: @primaryFont;
 			font-size: small;
 			list-style-type: none;
-			background-color: rgb(238, 234, 232);
+			background-color: @groupBgc;
 			padding: 12px 12px;
 			position: relative;
 			span {
@@ -63,7 +74,7 @@
 			}
 			
 			&:hover {
-				background-color: rgb(222, 220, 219);
+				background-color: @hoverColor;
 			}
 		}
 	}

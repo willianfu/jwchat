@@ -2,7 +2,7 @@
 	<div class="main">
 		<left-toolbar style="position:fixed; top: 0; left: 0; z-index: 999"></left-toolbar>
 		<div class="titles">
-			<title-main :select="$store.state.Session.chatSession"></title-main>
+			<title-main :title="$store.state.Session.selectSession"></title-main>
 		</div>
 		<router-view style="margin-left: 60px"/>
 	</div>
@@ -23,7 +23,7 @@
         },
         beforeCreate() {
             remote.getCurrentWindow().setSize(800, 800)
-            remote.getCurrentWindow().setMinimumSize(800, 500)
+            remote.getCurrentWindow().setMinimumSize(800, 800)
         },
 	    mounted(){
           this.$router.push('/chat')
@@ -34,6 +34,8 @@
 </script>
 
 <style scoped lang="less">
+	@import '@/assets/style/theme';
+	
 	.main {
 		height: 100%;
 		position: relative;;

@@ -23,7 +23,7 @@
             return{
                 select:null,
                 groups: [{
-                    img: require('../../../assets/group/img2.png'),
+                    img: require('../../../assets/image/group/img2.png'),
                     name: '嗦泡大队',
                     type: 'group',
                     msgs: [{
@@ -34,7 +34,7 @@
                     groupId: 1,
                     unRead: 20
                 }, {
-                    img: require('../../../assets/group/dyh.png'),
+                    img: require('../../../assets/image/group/dyh.png'),
                     name: '订阅号',
                     groupId: 2,
                     msgs: [{
@@ -45,13 +45,13 @@
                     type: 'public',
                     unRead: 0
                 }, {
-                    img: require('../../../assets/group/img3.png'),
+                    img: require('../../../assets/image/group/img3.png'),
                     name: '文件传输助手',
                     type: 'file',
                     groupId: 3,
                     unRead: 0
                 }, {
-                    img: require('../../../assets/group/mv1.jpg'),
+                    img: require('../../../assets/image/group/mv1.jpg'),
                     name: '小芳',
                     type: 'user',
                     msgs: [{
@@ -66,7 +66,7 @@
                     groupId: 4,
                     unRead: 5
                 }, {
-                    img: require('../../../assets/group/mv2.jpg'),
+                    img: require('../../../assets/image/group/mv2.jpg'),
                     name: '婉婉',
                     msgs: [{
                         isMe: false,
@@ -77,7 +77,7 @@
                     groupId: 5,
                     unRead: 3
                 }, {
-                    img: require('../../../assets/group/mv3.jpg'),
+                    img: require('../../../assets/image/group/mv3.jpg'),
                     name: '娜娜',
                     msgs: [{
                         isMe: false,
@@ -88,7 +88,7 @@
                     type: 'user',
                     unRead: 3
                 }, {
-                    img: require('../../../assets/group/ayi1.jpg'),
+                    img: require('../../../assets/image/group/ayi1.jpg'),
                     name: '王阿姨',
                     msgs: [{
                         isMe: false,
@@ -119,13 +119,15 @@
             },
             selects(s) {
                 this.select = s
-                this.$store.commit('setChatSession', s)
+                this.$store.commit('setTitle', s.name)
             },
 	    }
     }
 </script>
 
 <style scoped lang="less">
+	@import '@/assets/style/theme';
+	
 	.body {
 		height: calc(100% - 64px);
 		//width: 500px;
@@ -138,22 +140,22 @@
 			width: 250px;
 			padding: 0;
 			margin: 0 0;
-			background-color: rgb(238, 234, 232);
+			background-color: @groupBgc;
 			overflow-y: auto;
 			
 			&::-webkit-scrollbar {
-				background-color: rgb(238, 234, 232);
+				background-color: @groupBgc;
 			}
 			
 			li {
-				font-family: 微软雅黑, serif;
+				font-family: @primaryFont;
 				color: rgb(153, 153, 153);
 				padding: 5px 10px;
 				list-style-type: none;
-				background-color: rgb(238, 234, 232);
+				background-color: @groupBgc;
 				
 				&:hover {
-					background-color: rgb(222, 220, 219);
+					background-color: @hoverColor;
 				}
 			}
 		}

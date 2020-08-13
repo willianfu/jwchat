@@ -72,6 +72,8 @@
 </script>
 
 <style scoped lang="less">
+	@import '@/assets/style/theme';
+	
 	.cp-group {
 		height: 50px;
 		padding-top: 6px;

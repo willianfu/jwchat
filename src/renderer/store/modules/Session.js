@@ -1,12 +1,12 @@
 
 const state = {
     //选中得当前会话
-    chatSession: null
+    selectSession: null
 }
 
 const mutations = {
-   setChatSession(state, val){
-       state.chatSession = val
+   setSelectSession(state, val){
+       state.selectSession = val
    }
 }
 

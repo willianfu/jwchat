@@ -6,7 +6,7 @@
 		<div class="body">
 			<div class="logo" style="text-align:center;margin-top: 20px;">
 				<transition name="fade">
-					<img src="../assets/logo.png" width="90" height="80" v-show="showLogo"/>
+					<img src="../assets/image/logo.png" width="90" height="80" v-show="showLogo"/>
 				</transition>
 			</div>
 			<transition name="fade">
@@ -49,10 +49,11 @@
             }
         },
         beforeCreate() {
-            //remote.getCurrentWindow().setMaximumSize(350, 500)
-            remote.getCurrentWindow().setSize(650, 530, true)
+            remote.getCurrentWebContents().closeDevTools()
+            remote.getCurrentWindow().setSize(350, 500, false)
         },
         mounted() {
+            remote.getCurrentWindow().setSize(350, 500, false)
             this.showLogo = true;
             let that = this;
             setTimeout(() => {
@@ -78,6 +79,8 @@
 </script>
 
 <style scoped lang="less">
+	@import '@/assets/style/theme';
+	
 	.login {
 		height: 100%;
 		min-width: 340px;
@@ -96,7 +99,7 @@
 		padding: 0 20px;
 		min-width: 310px;
 		height: 100%;
-		background-color: rgb(239, 239, 239);
+		background-color: @grayBgc;
 		.el-checkbox__label{
 			font-size: 12px;
 		}
@@ -104,20 +107,20 @@
 			font-size: small;
 		}
 		.el-checkbox__input.is-checked+.el-checkbox__label{
-			color: #07C160;
+			color: @primary;
 		}
 		.el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner{
-			color: #07C160;
-			background-color: #07C160;
-			border-color: #07C160;
+			color: @primary;
+			background-color: @primary;
+			border-color: @primary;
 		}
 		.submit {
-			background-color: #07C160;
-			border-color: #07C160;
+			background-color: @primary;
+			border-color: @primary;
 			
 			&:hover {
-				background-color: #07d85d;
-				border-color: #07C160;
+				background-color: @primary;
+				border-color:@primary;
 			}
 			
 			margin-top: 5px;
@@ -149,7 +152,7 @@
 	.title {
 		width: 100%;
 		height: 50px;
-		background-color: rgb(239, 239, 239);
+		background-color: @grayBgc;
 		-webkit-app-region: drag;
 		
 		i {
@@ -166,7 +169,7 @@
 	}
 	
 	.el-input.is-active .el-input__inner, .el-input__inner:focus {
-		border-color: #07C160 !important;
+		border-color: @primary !important;
 	}
 	
 	.fade-enter-active, .fade-leave-active {
