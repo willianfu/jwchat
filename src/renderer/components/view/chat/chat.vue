@@ -22,6 +22,7 @@
 	    data(){
             return{
                 select:null,
+	            haha:require('../../../assets/image/collect/haha.jpg'),
                 groups: [{
                     img: require('../../../assets/image/group/img2.png'),
                     name: '嗦泡大队',
@@ -83,6 +84,10 @@
                         isMe: false,
                         content: '亲爱的，我怀孕了',
                         time: new Date().getTime()
+                    },{
+                        isMe: true,
+                        content: '<img src="https://s1.ax1x.com/2020/08/14/dC2uw9.jpg"/><p>孩子肯定不是我的</p>',
+                        time: new Date().getTime()
                     }],
                     groupId: 6,
                     type: 'user',
@@ -119,7 +124,7 @@
             },
             selects(s) {
                 this.select = s
-                this.$store.commit('setTitle', s.name)
+                this.$store.commit('setSelectSession', s)
             },
 	    }
     }

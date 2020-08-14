@@ -22,8 +22,8 @@
             }
         },
         beforeCreate() {
-            remote.getCurrentWindow().setSize(800, 800)
-            remote.getCurrentWindow().setMinimumSize(800, 800)
+            remote.getCurrentWindow().setSize(800, 550)
+            remote.getCurrentWindow().setMinimumSize(800, 550)
         },
 	    mounted(){
           this.$router.push('/chat')

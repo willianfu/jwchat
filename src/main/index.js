@@ -48,7 +48,7 @@ app.on('activate', () => {
 })
 
 const createTray = () => {
-    trayIcon = path.join(__dirname, '../renderer/assets/image/');
+    trayIcon = path.join(__dirname, './');
     tray = new Tray(path.join(trayIcon, 'tray.png'));
     const contextMenu = Menu.buildFromTemplate([
         {

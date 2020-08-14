@@ -69,6 +69,7 @@
   .v-modal{z-index: 0 !important;}
   ::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
     background-color: #fff;
   }
   ::-webkit-scrollbar-thumb {

@@ -32,7 +32,15 @@
                     {
                         title: '订阅号',
                         type: 'subscribe',
-                        list: [{img: require('../../../assets/image/group/dyh.png'), name: '订阅号'}]
+                        list: [{
+                            img: require('../../../assets/image/group/dyh.png'), name: '订阅号',
+                            data:[
+                                {img: require('../../../assets/image/group/gzh/rxkf.jpg'), name: '瑞幸咖啡'},
+                                {img: require('../../../assets/image/group/gzh/sfkd.jpg'), name: '顺丰快递'},
+                                {img: require('../../../assets/image/group/gzh/wps.jpg'), name: 'WPS'},
+                                {img: require('../../../assets/image/group/gzh/wxzf.jpg'), name: '微信支付'},
+                            ]
+                        }]
                     },
                 ],
                 select: null,
@@ -42,7 +50,12 @@
                         title: '群聊',
                         type: 'group',
                         list: [
-                            {img: require('../../../assets/image/group/img2.png'), name: '嗦泡大队'},
+                            {img: require('../../../assets/image/group/img2.png'), name: '嗦泡大队',
+                                data:[
+                                    {img: require('../../../assets/image/group/mv1.jpg'), name: '妮妮'},
+                                    {img: require('../../../assets/image/group/mv3.jpg'), name: '娜娜'},
+                                    {img: require('../../../assets/image/group/mv2.jpg'), name: '婉婉'},
+                                ]},
                             {img: require('../../../assets/image/group/img2.png'), name: 'bugStack虫洞栈'},
                             {img: require('../../../assets/image/group/img2.png'), name: '相亲相爱一家人'},
                         ]
@@ -51,15 +64,15 @@
                         title: 'N',
                         type: 'friend',
                         list: [
-                            {img: require('../../../assets/image/group/mv1.jpg'), name: '妮妮'},
-                            {img: require('../../../assets/image/group/mv3.jpg'), name: '娜娜'}
+                            {img: require('../../../assets/image/group/mv1.jpg'), name: '妮妮', sex:true, },
+                            {img: require('../../../assets/image/group/mv3.jpg'), name: '娜娜', sex:false}
                         ]
                     }, {
                         title: 'W',
                         type: 'friend',
                         list: [
-                            {img: require('../../../assets/image/group/mv2.jpg'), name: '婉婉'},
-                            {img: require('../../../assets/image/group/ayi1.jpg'), name: '王阿姨'}
+                            {img: require('../../../assets/image/group/mv2.jpg'), name: '婉婉',sex:false},
+                            {img: require('../../../assets/image/group/ayi1.jpg'), name: '王阿姨',sex:false}
                         ]
                     },
 

@@ -96,9 +96,9 @@
 			height: 100%;
 			background-color: @groupBgc;
 			span{
-				margin-left: 8px;
+				margin:8px;
 				cursor: pointer;
-				padding: 4px 4.5px;
+				padding: 2px 4px;
 				border-radius: 5px;
 				background-color: rgb(219, 217, 216);
 				-webkit-app-region: no-drag;
@@ -122,7 +122,7 @@
 					//border: 1px solid red;
 					margin: 0 0;
 					&:hover{
-						background-color: rgb(229, 229, 229);
+						background-color: rgb(222, 220, 219);
 					}
 				}
 				&>span:last-child{

@@ -1,6 +1,7 @@
 <template>
 	<div class="login">
 		<div class="title">
+			<span>微聊</span>
 			<i class="el-icon-close" @click="exit"></i>
 		</div>
 		<div class="body">
@@ -150,11 +151,16 @@
 	}
 	
 	.title {
+		text-align: left;
 		width: 100%;
 		height: 50px;
+		line-height: 50px;
 		background-color: @grayBgc;
 		-webkit-app-region: drag;
-		
+		span{
+			color: @icoHc;
+			margin-left: 20px;
+		}
 		i {
 			cursor: pointer;
 			float: right;
